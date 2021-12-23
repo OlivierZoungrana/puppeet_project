@@ -1,12 +1,9 @@
-const puppeteer = require("puppeteer")
-const adresseWeb= 'https://www.seloger.com'
-
-
+const puppeteer = require('puppeteer');
 (async () => {
+  const browser = await puppeteer.launch({headless: false});
+  const page = await browser.newPage();
+  await page.goto('https://seloger.com');
+  await page.screenshot({ path: 'example.png' });
 
-const browser = await puppeteer.launch({headless:false})
-const page = await browser.newPage()
-await page.goto(adresseWeb, {waitUntil: 'networkidle2'})
-await browser.close()
-
+  await browser.close();
 })();
